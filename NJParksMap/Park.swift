@@ -47,7 +47,6 @@ class Park: NSObject, MKAnnotation {
   }
     
   init?(feature: MKGeoJSONFeature) {
-    // 1
     guard
       let point = feature.geometry.first as? MKPointAnnotation,
       let propertiesData = feature.properties,
@@ -57,7 +56,6 @@ class Park: NSObject, MKAnnotation {
         return nil
     }
 
-    // 3
     title = properties["NAME"] as? String
     county = properties["COUNTY"] as? String
     coordinate = point.coordinate
