@@ -49,16 +49,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         
       //Decode GeoJSON
       do {
-        // 2
         let features = try MKGeoJSONDecoder()
           .decode(parkData)
           .compactMap { $0 as? MKGeoJSONFeature }
-        // 3
-        let validWorks = features.compactMap(Park.init)
-        // 4
-        parks.append(contentsOf: validWorks)
+        let displayParks = features.compactMap(Park.init)
+        parks.append(contentsOf: displayParks)
       } catch {
-        // 5
         print("Unexpected error: \(error).")
       }
     }
